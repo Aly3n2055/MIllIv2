@@ -1,4 +1,3 @@
-/* Import fonts */
 @import '@fontsource/orbitron';
 @import '@fontsource/exo-2';
 
@@ -6,13 +5,36 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: 120 100% 50%; /* #00FF00 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 300 100% 50%; /* #FF00FF */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 120 100% 50%; /* #00FF00 */
+  --accent-foreground: 0 0% 100%;
+}
+
+.dark {
+  --primary: 120 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 300 100% 50%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 120 100% 50%;
+  --accent-foreground: 0 0% 100%;
+}
+
 @layer base {
   :root {
+    --header-height: 60px;
     --alien-glow: #00FF00;
     --alien-dark: #262626;
     --alien-accent: #FF00FF;
     --alien-text: #FFFFFF;
     --neural-pattern: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2300FF00' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  body {
+    @apply overflow-x-hidden;
   }
 
   * {
@@ -40,17 +62,27 @@
   }
 }
 
-/* Custom cursor */
+@layer components {
+  .container {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+
+  .mobile-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
 @layer utilities {
   .glow-text {
     text-shadow: 0 0 10px var(--alien-glow), 0 0 20px var(--alien-glow), 0 0 30px var(--alien-glow);
   }
-  
+
   .tech-border {
     position: relative;
     z-index: 1;
   }
-  
+
   .tech-border::before {
     content: '';
     position: absolute;
@@ -67,11 +99,11 @@
     border-radius: inherit;
     opacity: 0.5;
   }
-  
+
   .alien-gradient {
     background: linear-gradient(135deg, #00FF00 0%, #00AA00 50%, #FF00FF 100%);
   }
-  
+
   .alien-glow {
     box-shadow: 0 0 15px 2px rgba(0, 255, 0, 0.3);
   }
@@ -82,24 +114,24 @@
       linear-gradient(to right, rgba(0, 255, 0, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
   }
-  
+
   .glitch {
     position: relative;
     animation: glitch 5s infinite;
   }
-  
+
   .animate-pulse-slow {
     animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  
+
   .animation-delay-300 {
     animation-delay: 300ms;
   }
-  
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }
-  
+
   @keyframes pulse {
     0%, 100% {
       opacity: 0.3;
@@ -108,7 +140,7 @@
       opacity: 0.8;
     }
   }
-  
+
   @keyframes glitch {
     0% {
       transform: translate(0);
@@ -129,12 +161,12 @@
       transform: translate(0);
     }
   }
-  
+
   .scanner {
     position: relative;
     overflow: hidden;
   }
-  
+
   .scanner::after {
     content: '';
     position: absolute;
@@ -146,7 +178,7 @@
     animation: scan 3s linear infinite;
     transform: skewY(-20deg);
   }
-  
+
   @keyframes scan {
     0% {
       top: -100%;
@@ -155,7 +187,7 @@
       top: 100%;
     }
   }
-  
+
   .alien-circle {
     border-radius: 50%;
     border: 1px solid var(--alien-glow);

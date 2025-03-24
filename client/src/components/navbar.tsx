@@ -93,15 +93,15 @@ export function Navbar() {
               </div>
             </a>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection("services")} className="text-white hover:text-[#00FF00] transition-colors duration-200 uppercase tracking-wider text-sm font-medium">
+            <button onClick={() => scrollToSection("services")} className="text-white hover:text-[#FF00FF] transition-colors duration-200 uppercase tracking-wider text-sm font-medium">
               Services
             </button>
-            <button onClick={() => scrollToSection("about")} className="text-white hover:text-[#00FF00] transition-colors duration-200 uppercase tracking-wider text-sm font-medium">
+            <button onClick={() => scrollToSection("about")} className="text-white hover:text-[#FF00FF] transition-colors duration-200 uppercase tracking-wider text-sm font-medium">
               About
             </button>
-            <button onClick={() => scrollToSection("roadmap")} className="text-white hover:text-[#00FF00] transition-colors duration-200 uppercase tracking-wider text-sm font-medium">
+            <button onClick={() => scrollToSection("roadmap")} className="text-white hover:text-[#FF00FF] transition-colors duration-200 uppercase tracking-wider text-sm font-medium">
               Roadmap
             </button>
             <Button onClick={() => scrollToSection("contact")} variant="outline" className="border-[#FF00FF] text-[#FF00FF] hover:bg-[#FF00FF]/10 hover:text-white relative group overflow-hidden uppercase tracking-wider">
@@ -109,7 +109,7 @@ export function Navbar() {
               <span className="absolute inset-0 bg-[#FF00FF]/0 group-hover:bg-[#FF00FF]/10 transition-all duration-300"></span>
             </Button>
           </div>
-          
+
           <div className="flex md:hidden items-center">
             <Button variant="ghost" size="icon" onClick={toggleMenu} className="text-[#00FF00] hover:text-white hover:bg-[#00FF00]/10">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -117,29 +117,29 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
       {isMobile && (
         <div className={cn(
-          "md:hidden bg-[#262626]/95 backdrop-blur-lg border-b border-[#00FF00]/10 transition-all duration-300",
-          isOpen ? "block" : "hidden"
+          "fixed top-[60px] left-0 right-0 z-50 md:hidden bg-[#262626]/95 backdrop-blur-lg border-b border-[#00FF00]/10 transition-all duration-300 transform",
+          isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         )}>
-          <div className="px-4 pt-4 pb-6 space-y-2">
+          <div className="px-4 pt-4 pb-6 space-y-3">
             <button 
               onClick={() => scrollToSection("services")} 
-              className="block w-full text-left px-4 py-3 text-base font-medium text-white hover:text-[#00FF00] border-l-2 border-transparent hover:border-[#00FF00] transition-all duration-200"
+              className="block w-full text-left px-4 py-3 text-base font-medium text-white hover:text-[#FF00FF] border-l-2 border-transparent hover:border-[#FF00FF] transition-all duration-200"
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection("about")} 
-              className="block w-full text-left px-4 py-3 text-base font-medium text-white hover:text-[#00FF00] border-l-2 border-transparent hover:border-[#00FF00] transition-all duration-200"
+              className="block w-full text-left px-4 py-3 text-base font-medium text-white hover:text-[#FF00FF] border-l-2 border-transparent hover:border-[#FF00FF] transition-all duration-200"
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection("roadmap")} 
-              className="block w-full text-left px-4 py-3 text-base font-medium text-white hover:text-[#00FF00] border-l-2 border-transparent hover:border-[#00FF00] transition-all duration-200"
+              className="block w-full text-left px-4 py-3 text-base font-medium text-white hover:text-[#FF00FF] border-l-2 border-transparent hover:border-[#FF00FF] transition-all duration-200"
             >
               Roadmap
             </button>
